@@ -1,55 +1,32 @@
+import { WorkContext } from './contexts/work.context';
+import { BreakContext } from './contexts/break.context';
+import { LongBreakContext } from './contexts/longBreak.context';
 import Timer from './Timer';
 import Customizer from './Customizer';
-import FlipCard from './components/FlipCard';
+// import FlipCard from './components/FlipCard';
 
 import "./App.css";
 import './components/FlipCard/styles.css';
 
-const cards = [
-    {
-        id: "1",
-        variant: "hover",
-        front: "Hover",
-        back: "Back",
-        cardType: "hover"
-    },
-    {
-        id: "2",
-        variant: "click",
-        front: "Click",
-        back: "Back",
-        cardType: "click"
-    },
-];
-
-const FrontContent = () => {
-    return (
-        <p>
-            Front<b>Content</b>
-        </p>
-    )
-}
-const BackContent = () => {
-    return (
-        <p>
-            Back<b>Content</b>
-        </p>
-    )
-}
 
 function App() {
-    return (
-        <div className="App">
-            {/* <div className='container w-full flex justify-center'> */}
-            {/* <FlipCard key="clickCard" cardType='click' BackContent={BackContent} FrontContent={FrontContent} /> */}
-            {/* <FlipCard key="hoverCard" cardType='hover' BackContent={BackContent} FrontContent={FrontContent} /> */}
+	return (
+		<div className="App">
+			{/* <div className='container w-full flex justify-center'> */}
+			{/* <FlipCard key="hoverCard" cardType='hover' BackContent={BackContent} FrontContent={FrontContent} /> */}
 
-            {/* </div> */}
-            <Customizer>
-                <Timer />
-            </Customizer>
-        </div>
-    );
+			{/* </div> */}
+			<LongBreakContext>
+				<BreakContext>
+					<WorkContext>
+						{/* <FlipCard key="clickCard" cardType='click' BackContent={Timer} FrontContent={Customizer} /> */}
+						<Timer />
+						<Customizer />
+					</WorkContext>
+				</BreakContext>
+			</LongBreakContext>
+		</div>
+	);
 }
 
 export default App;

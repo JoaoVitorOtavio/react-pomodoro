@@ -3,7 +3,9 @@ import { Duration } from 'luxon';
 import { Button } from '@material-ui/core'
 import { LaptopChromebook, FreeBreakfast, LocalHotel, Pause, PlayArrow } from '@material-ui/icons'
 
-import { breakContext, longBreakContext, workContext } from './Customizer'
+import { CustomWorkContext } from './contexts/work.context'
+import { CustomBreakContext } from './contexts/break.context'
+import { CustomLongBreakContext } from './contexts/longBreak.context'
 
 import endedAudio from './Audio/alert_simple.wav'
 import startedAudio from './Audio/notification_simple-01.wav'
@@ -19,9 +21,9 @@ function Timer() {
 	const [sessionType, setSessionType] = useState('Work');
 	const [sessionNumber, setSessionNumber] = useState(0);
 
-	const longBreakLength = useContext(longBreakContext)
-	const breakLength = useContext(breakContext)
-	const workLength = useContext(workContext)
+	const longBreakContext = useContext(CustomLongBreakContext)
+	const breakContext = useContext(CustomBreakContext)
+	const workContext = useContext(CustomWorkContext)
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -51,20 +53,20 @@ function Timer() {
 
 	useEffect(() => {
 		if (sessionType === "Work") {
-			setTimerLength(workLength);
+			setTimerLength(workContext.value);
 		}
-	}, [sessionType, workLength]);
+	}, [sessionType, workContext]);
 	useEffect(() => {
 		if (sessionType === "Break") {
-			setTimerLength(breakLength);
+			setTimerLength(breakContext.value);
 		}
-	}, [breakLength, sessionType]);
+	}, [breakContext, sessionType]);
 
 	useEffect(() => {
 		if (sessionType === "Long Break") {
-			setTimerLength(longBreakLength);
+			setTimerLength(longBreakContext.value);
 		}
-	}, [longBreakLength, sessionType]);
+	}, [longBreakContext, sessionType]);
 
 	useEffect(() => {
 		if (sessionType === "Work" && timerDone) {
