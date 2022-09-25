@@ -3,11 +3,11 @@ import cn from "classnames";
 
 import "./styles.css";
 
-function FlipCard({ card }) {
+function FlipCard({ cardType, FrontContent, BackContent }) {
 	const [showBack, setShowBack] = useState(false);
 
 	function handleClick() {
-		if (card.variant === "click") {
+		if (cardType === "click") {
 			setShowBack(!showBack);
 		}
 	}
@@ -19,17 +19,21 @@ function FlipCard({ card }) {
 				<div
 					className={cn("flip-card-inner", {
 						showBack,
-						"hover-trigger": card.variant === "hover"
+						"hover-trigger": cardType === "hover"
 					})}
 				>
 					<div className="card front">
 						<div className="card-body flex justify-center items-center">
-							<p className="card-text fs-1 fw-bold">{card.front}</p>
+							<p className="card-text fs-1 fw-bold">
+								<FrontContent />
+							</p>
 						</div>
 					</div>
 					<div className="card back">
 						<div className="card-body flex justify-center items-center">
-							<p className="card-text fs-1 fw-bold">{card.back}</p>
+							<p className="card-text fs-1 fw-bold">
+								<BackContent />
+							</p>
 						</div>
 					</div>
 				</div>

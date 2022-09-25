@@ -10,34 +10,44 @@ const cards = [
         id: "1",
         variant: "hover",
         front: "Hover",
-        back: "Back"
+        back: "Back",
+        cardType: "hover"
     },
     {
         id: "2",
         variant: "click",
         front: "Click",
-        back: "Back"
+        back: "Back",
+        cardType: "click"
     },
-    {
-        id: "3",
-        variant: "focus",
-        front: "Focus",
-        back: "Back"
-    }
 ];
+
+const FrontContent = () => {
+    return (
+        <p>
+            Front<b>Content</b>
+        </p>
+    )
+}
+const BackContent = () => {
+    return (
+        <p>
+            Back<b>Content</b>
+        </p>
+    )
+}
 
 function App() {
     return (
         <div className="App">
-            <div className='container w-full flex justify-center'>
-                {cards.map((card) => (
-                    <FlipCard key={card.id} card={card} />
-                ))}
+            {/* <div className='container w-full flex justify-center'> */}
+            {/* <FlipCard key="clickCard" cardType='click' BackContent={BackContent} FrontContent={FrontContent} /> */}
+            {/* <FlipCard key="hoverCard" cardType='hover' BackContent={BackContent} FrontContent={FrontContent} /> */}
 
-            </div>
-            {/* <Customizer>
+            {/* </div> */}
+            <Customizer>
                 <Timer />
-            </Customizer> */}
+            </Customizer>
         </div>
     );
 }
