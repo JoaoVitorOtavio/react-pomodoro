@@ -22,18 +22,14 @@ function FlipCard({ cardType, FrontContent, BackContent }) {
 						"hover-trigger": cardType === "hover"
 					})}
 				>
-					<div className="card front">
-						<div className="card-body flex justify-center items-center">
-							<p className="card-text fs-1 fw-bold">
-								<FrontContent />
-							</p>
+					<div className="card front" >
+						<div className="card-body flex justify-center items-center h-full" >
+							<FrontContent />
 						</div>
 					</div>
 					<div className="card back">
 						<div className="card-body flex justify-center items-center">
-							<p className="card-text fs-1 fw-bold">
-								<BackContent />
-							</p>
+							<BackContent />
 						</div>
 					</div>
 				</div>

@@ -3,7 +3,7 @@ import { BreakContext } from './contexts/break.context';
 import { LongBreakContext } from './contexts/longBreak.context';
 import Timer from './Timer';
 import Customizer from './Customizer';
-// import FlipCard from './components/FlipCard';
+import FlipCard from './components/FlipCard';
 
 import "./App.css";
 import './components/FlipCard/styles.css';
@@ -19,9 +19,11 @@ function App() {
 			<LongBreakContext>
 				<BreakContext>
 					<WorkContext>
-						{/* <FlipCard key="clickCard" cardType='click' BackContent={Timer} FrontContent={Customizer} /> */}
-						<Timer />
-						<Customizer />
+						<div className='flex justify-center items-center h-screen ' style={{ backgroundColor: '#21130d' }}>
+							<FlipCard key="clickCard" cardType='click' BackContent={Customizer} FrontContent={Timer} />
+						</div>
+						{/* <Timer />
+						<Customizer /> */}
 					</WorkContext>
 				</BreakContext>
 			</LongBreakContext>
