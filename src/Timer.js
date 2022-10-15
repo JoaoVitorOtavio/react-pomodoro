@@ -17,13 +17,6 @@ import "./index.css";
 const startedSound = new Audio(startedAudio)
 const endedSound = new Audio(endedAudio)
 
-
-function tomatoesCount() {
-	return (
-		<img style={{ width: '60px', height: '60px' }} src={tomatoImage} alt='tomatinho' />
-	)
-}
-
 function Timer() {
 	const [timerLength, setTimerLength] = useState(1500);
 	const [timerOn, setTimerOn] = useState(false);
@@ -161,16 +154,6 @@ function Timer() {
 					)}
 				</div>
 			</div>
-			{/* <div className="flex flex-col w-full justify-between h-full" style={{ backgroundColor: 'red' }}>
-
-				<div className='flex flex-col justify-center items-center'>
-
-
-					<div>
-
-					</div>
-				</div>
-			</div> */}
 		</>
 	)
 }

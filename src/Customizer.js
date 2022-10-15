@@ -5,10 +5,6 @@ import { CustomWorkContext } from './contexts/work.context'
 import { CustomBreakContext } from './contexts/break.context'
 import { CustomLongBreakContext } from './contexts/longBreak.context'
 
-// export const breakContext = createContext();
-// export const workContext = createContext();
-// export const longBreakContext = createContext();
-
 function Customizer() {
 	const workContext = useContext(CustomWorkContext)
 	const breakContext = useContext(CustomBreakContext)
@@ -32,85 +28,95 @@ function Customizer() {
 
 	return (
 		<>
-			{/* <workContext.Provider value={workLength}> */}
-			{/* <breakContext.Provider value={breakLength}> */}
-			{/* <longBreakContext.Provider value={longBreakLength}>
-				{props.children}
-			</longBreakContext.Provider> */}
-			{/* </breakContext.Provider> */}
-			{/* </workContext.Provider> */}
-			<div className="flex flex-col sm:justify-evenly sm:flex-row sm:space-y-0 mt-6 space-y-10  text-lg text-secondary">
+			<div className="flex flex-col justify-evenly items-center gap-1 w-full h-full" style={{ backgroundColor: '#2d2d2d' }}>
 				<div>
-					<p>
-						<FreeBreakfast />
-						Break: {breakLength}
-					</p>
-					<Button
-						color="secondary"
-						variant="contained"
-						size="large"
-						startIcon={<Remove />}
-						onClick={() =>
-							setBreakLength((prevLength) =>
-								prevLength === 0 ? 0 : prevLength - 1
-							)
-						}
-					></Button>
-					<Button
-						color="primary"
-						variant="contained"
-						size="large"
-						startIcon={<Add />}
-						onClick={() => setBreakLength(breakLength + 1)}
-					></Button>
+					<h1 style={{ color: 'white', fontSize: '25px', fontWeight: '600' }}>Configurações</h1>
 				</div>
-				<div>
-					<p>
-						<LaptopChromebook />
-						Work: {workLength}
-					</p>
-					<Button
-						color="secondary"
-						variant="contained"
-						size="large"
-						startIcon={<Remove />}
-						onClick={() =>
-							setWorkLength((prevLength) =>
-								prevLength === 0 ? 0 : prevLength - 1
-							)
-						}
-					></Button>
-					<Button
-						color="primary"
-						variant="contained"
-						size="large"
-						startIcon={<Add />}
-						onClick={() => setWorkLength(workLength + 1)}
-					></Button>
+				<div className='flex flex-col justify-center items-center gap-2 w-full'>
+					<div>
+						<p style={{ color: 'white' }}>
+							<FreeBreakfast />&nbsp;
+							Break: <b>{breakLength}</b>
+						</p>
+					</div>
+					<div className='flex gap-4'>
+						<Button
+							color="secondary"
+							variant="contained"
+							size="large"
+							startIcon={<Remove />}
+							onClick={() =>
+								setBreakLength((prevLength) =>
+									prevLength === 0 ? 0 : prevLength - 1
+								)
+							}
+						></Button>
+						<Button
+							color="primary"
+							variant="contained"
+							size="large"
+							startIcon={<Add />}
+							onClick={() => setBreakLength(breakLength + 1)}
+						></Button>
+					</div>
 				</div>
-				<div>
-					<p>
-						<LocalHotel />
-						Long Break: {longBreakLength}
-					</p>
-					<Button
-						color="secondary"
-						variant="contained"
-						size="large"
-						startIcon={<Remove />}
-						onClick={() =>
-							setLongBreakLength((prevLength) =>
-								prevLength === 0 ? 0 : prevLength - 1
-							)
-						}
-					></Button>
-					<Button
-						color="primary"
-						variant="contained"
-						size="large"
-						startIcon={<Add />}
-						onClick={() => setLongBreakLength(longBreakLength + 1)}
-					></Button>
+
+
+				<div className='flex flex-col justify-center items-center gap-2 w-full'>
+					<div>
+						<p style={{ color: 'white' }}>
+							<LaptopChromebook />&nbsp;
+							Work: <b>{workLength}</b>
+						</p>
+					</div>
+					<div className='flex gap-4'>
+						<Button
+							color="secondary"
+							variant="contained"
+							size="large"
+							startIcon={<Remove />}
+							onClick={() =>
+								setWorkLength((prevLength) =>
+									prevLength === 0 ? 0 : prevLength - 1
+								)
+							}
+						></Button>
+						<Button
+							color="primary"
+							variant="contained"
+							size="large"
+							startIcon={<Add />}
+							onClick={() => setWorkLength(workLength + 1)}
+						></Button>
+					</div>
+				</div>
+				<div className='flex flex-col justify-center items-center gap-2 w-full'>
+					<div>
+						<p style={{ color: 'white' }}>
+							<LocalHotel />&nbsp;
+							Long Break: <b>{longBreakLength}</b>
+						</p>
+					</div>
+					<div className='flex gap-4'>
+						<Button
+							color="secondary"
+							variant="contained"
+							size="large"
+							startIcon={<Remove />}
+							onClick={() =>
+								setLongBreakLength((prevLength) =>
+									prevLength === 0 ? 0 : prevLength - 1
+								)
+							}
+						></Button>
+						<Button
+							color="primary"
+							variant="contained"
+							size="large"
+							startIcon={<Add />}
+							onClick={() => setLongBreakLength(longBreakLength + 1)}
+						></Button>
+					</div>
 				</div>
 			</div>
 		</>

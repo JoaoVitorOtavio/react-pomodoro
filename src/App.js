@@ -19,7 +19,7 @@ function App() {
 			<LongBreakContext>
 				<BreakContext>
 					<WorkContext>
-						<div className='flex justify-center items-center h-screen ' style={{ backgroundColor: '#21130d' }}>
+						<div className='flex justify-center items-center h-screen' style={{ backgroundColor: '#dbdbdb' }}>
 							<FlipCard key="clickCard" cardType='click' BackContent={Customizer} FrontContent={Timer} />
 						</div>
 						{/* <Timer />

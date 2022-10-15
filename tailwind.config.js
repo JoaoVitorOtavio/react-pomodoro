@@ -2,7 +2,11 @@
 module.exports = {
     content: ["./src/**/*.{html,js}"],
     theme: {
-        extend: {},
+        extend: {
+            boxShadow: {
+                'myCreation': '8px 8px 8px rgb(76 76 76)',
+            }
+        },
         backgroundColor: (theme) => ({
             primary: "#3b4252",
         }),

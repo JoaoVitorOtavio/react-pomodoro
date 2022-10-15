@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import cn from "classnames";
+import { Settings, Timer } from '@material-ui/icons'
 
 import "./styles.css";
 
@@ -13,22 +14,27 @@ function FlipCard({ cardType, FrontContent, BackContent }) {
 	}
 	return (
 		<>
-			<div className="flip-card-outer max-w-sm rounded overflow-hidden shadow-lg bg-[white] m-4 cursor-pointer"
-				onClick={handleClick}
+			<div className="flip-card-outer w-full max-w-sm rounded overflow-hidden m-4 shadow-myCreation" style={{ backgroundColor: '#2d2d2d' }}
 			>
 				<div
-					className={cn("flip-card-inner", {
+					className={cn("flip-card-inner w-full", {
 						showBack,
 						"hover-trigger": cardType === "hover"
 					})}
 				>
 					<div className="card front" >
-						<div className="card-body flex justify-center items-center h-full" >
+						<div className="card-body flex flex-col justify-center items-center h-full" >
+							<div className='flex justify-end w-full px-1 py-1' style={{ Color: "white" }}>
+								<Settings className='cursor-pointer' onClick={handleClick} />
+							</div>
 							<FrontContent />
 						</div>
 					</div>
 					<div className="card back">
-						<div className="card-body flex justify-center items-center">
+						<div className="card-body flex flex-col justify-center items-center h-full w-full" style={{ backgroundColor: '#2d2d2d' }}>
+							<div className='flex justify-end w-full px-1 py-1' style={{ Color: "white" }}>
+								<Timer style={{ color: 'white' }} className='cursor-pointer' onClick={handleClick} />
+							</div>
 							<BackContent />
 						</div>
 					</div>
