@@ -25,6 +25,8 @@ function Timer() {
 	const [sessionType, setSessionType] = useState('Work');
 	const [sessionNumber, setSessionNumber] = useState(0);
 
+	const [firstTime, setFirstTime] = useState(true)
+
 	const longBreakContext = useContext(CustomLongBreakContext)
 	const breakContext = useContext(CustomBreakContext)
 	const workContext = useContext(CustomWorkContext)
@@ -44,7 +46,7 @@ function Timer() {
 	}, [timerOn]);
 
 	useEffect(() => {
-		if (timerLength === 0) {
+		if (timerLength === 0 && !firstTime) {
 			setTimerOn(false);
 			setTimerDone(true);
 			setSessionType((prevType) => {
@@ -53,7 +55,7 @@ function Timer() {
 				if (prevType === "Long Break") return "Work";
 			});
 		}
-	}, [timerLength]);
+	}, [firstTime, timerLength]);
 
 	useEffect(() => {
 		if (sessionType === "Work") {
@@ -73,13 +75,13 @@ function Timer() {
 	}, [longBreakContext, sessionType]);
 
 	useEffect(() => {
-		if (sessionType === "Work" && timerDone) {
+		if (sessionType === "Work" && timerDone && !firstTime) {
 			setSessionNumber((prevNumber) => prevNumber + 1);
 		}
 		if (timerDone) {
 			endedSound.play()
 		}
-	}, [sessionType, timerDone]);
+	}, [firstTime, sessionType, timerDone]);
 
 	useEffect(() => {
 		if (sessionNumber > 4) {
@@ -90,9 +92,7 @@ function Timer() {
 
 	return (
 		<>
-			{/* pai */}
 			<div className='flex flex-col w-full h-full justify-evenly'>
-				{/* filhos */}
 				<div className='flex justify-center'>
 					<Button
 						className='w-[80%]'
@@ -103,6 +103,7 @@ function Timer() {
 						onClick={() => {
 							setTimerOn(!timerOn)
 							startedSound.play()
+							setFirstTime(false)
 						}}
 					>
 						{timerOn ? "Pause" : "Run"}
@@ -119,13 +120,18 @@ function Timer() {
 					</p>
 				</div>
 				<div className='flex justify-center items-center gap-1'>
-					{(() => {
-						let images = [];
-						for (let i = 1; i <= sessionNumber; i++) {
-							images.push(<img style={{ width: '60px', height: '60px' }} src={tomatoImage} alt='tomatinho' />);
-						}
-						return images;
-					})()}
+					{!sessionNumber ?
+						<div>
+							<img src={'https://media.tenor.com/hPD0Ehzl8LMAAAAj/dance.gif'} alt='pato' />
+						</div> :
+						(() => {
+							let images = [];
+							for (let i = 1; i <= sessionNumber; i++) {
+								images.push(<img style={{ width: '60px', height: '60px' }} key={i} src={tomatoImage} alt='tomatinho' />);
+							}
+							return images;
+						})()
+					}
 				</div>
 				<div className='flex justify-center'>
 					{sessionType === "Break" && (
