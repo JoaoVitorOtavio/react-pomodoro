@@ -2,7 +2,7 @@ import { createContext, useState } from 'react';
 
 const initialValue = {
     value: 0,
-    onChangeValue: undefined,
+    onChangeValue: () => { },
     reset: undefined,
 };
 
